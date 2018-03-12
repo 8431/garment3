@@ -1,0 +1,34 @@
+server:
+    port: 8081
+
+#spring
+spring:
+  devtools:
+    restart:
+      enabled: true     #这里是为了热部署的，与mybatis是无关的
+
+  #DATABASE CONFIG
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: dlf
+    password: 16899199
+    url: jdbc:mysql://127.0.0.1:3306/chatDemo?useUnicode=true&characterEncoding=utf-8
+    type: com.alibaba.druid.pool.DruidDataSource   #这里是配置druid连接池，以下都是druid的配置信息
+    filters: stat,wall,log4j
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+    connection-properties: druid.stat.merggSql=ture;druid.stat.slowSqlMillis=5000
+
+#mybatis
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml

@@ -1,0 +1,13 @@
+﻿[
+	{id: "system", text: "系统管理"},
+	{id: "garment_usr", text: "用户管理", pid: "system"},
+	{id: "garment_role", text: "角色管理", pid: "system"},
+	{id: "setdata", text: "录入数据"},
+	{id: "garment_usr", text: "裁床工", pid: "setdata"},
+    {id: "garment_role", text: "收发工", pid: "setdata"},
+     {id: "garment_role", text: "指导工", pid: "setdata"},
+	{id: "message", text: "消息管理"},
+	{id: "zdgl", text: "账单管理"},
+]
+
+

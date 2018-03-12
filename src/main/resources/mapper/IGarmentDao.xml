@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mapper.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dlf.garment3.mapper.IGarmentDao">
+    <insert id="baseInsert" parameterType="java.util.Map">
+        insert into ${table}(
+        <foreach collection="InsertMap" item="InsertMapkey" index="key"
+                 separator=" , ">
+            ${InsertMapkey}
+        </foreach>
+        )VALUES
+        <foreach collection="InsertMapVal" item="itemInsertMapVal" separator=",">
+            (
+            <foreach collection="itemInsertMapVal" item="itemInsertMapValson" separator=",">
+                #{itemInsertMapValson}
+            </foreach>
+            )
+        </foreach>
+    </insert>
+    <delete id="baseDelete" parameterType="java.util.Map">
+        delete from ${table} where id in(
+        <foreach collection="deleteMap" item="deleteMapkey" index="key"
+                 separator=" , ">
+            #{deleteMapkey}
+        </foreach>
+        )
+    </delete>
+    <update id="baseUpdate" parameterType="java.util.Map">
+
+        update ${table}
+        <set>
+            <foreach collection="updateMap" item="k" index="key"
+                     separator=" , ">
+                <if test="key!='tablename'">
+                    ${key}= #{k}
+                </if>
+            </foreach>
+        </set>
+        where id=#{id}
+    </update>
+
+</mapper>
